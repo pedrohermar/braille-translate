@@ -1,15 +1,19 @@
 <script>
+  import Header from "./lib/components/Header.svelte";
   import { braileMap } from "./lib/alphabets/braileMap";
 
   let texto = "";
   let textoTraducido = "";
+
+  let languageFrom = 'Español';
+  let languageTo = 'Braille';
 
   function handleInput(e) {
     texto = e.target.value;
   }
 
   function handleSwitchLanguages(e) {
-    console.log("idioma cambiado");
+    [languageFrom, languageTo] = [languageTo, languageFrom]
   }
 
   $: {
@@ -20,17 +24,14 @@
   }
 </script>
 
-<header>
-  <img src="braille.svg" alt="Logo Braille" height="140px" width="140px" />
-  <h1>Traductor <br /> Braille</h1>
-</header>
+<Header />
 
 <main>
   <div class="translate-container">
     <div class="translate-header">
-      <h2>Español</h2>
+      <h2>{languageFrom}</h2>
       <button class="switch-languages" on:click={handleSwitchLanguages} />
-      <h2>Braille</h2>
+      <h2>{languageTo}</h2>
     </div>
     <div class="translate-area">
       <textarea name="from" on:input={handleInput} class="translate-from" />
@@ -46,12 +47,6 @@
 </main>
 
 <style>
-  header {
-    margin: 40px;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-  }
 
   .translate-container {
     border: 2px solid gray;
@@ -82,13 +77,6 @@
     width: 80px;
     border: none;
     cursor: pointer;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: 4em;
-    line-height: 1em;
-    text-align: left;
   }
 
   h2 {
