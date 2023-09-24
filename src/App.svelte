@@ -5,15 +5,15 @@
   let texto = "";
   let textoTraducido = "";
 
-  let languageFrom = 'Español';
-  let languageTo = 'Braille';
+  let languageFrom = "Español";
+  let languageTo = "Braille";
 
   function handleInput(e) {
     texto = e.target.value;
   }
 
   function handleSwitchLanguages(e) {
-    [languageFrom, languageTo] = [languageTo, languageFrom]
+    [languageFrom, languageTo] = [languageTo, languageFrom];
   }
 
   $: {
@@ -34,7 +34,15 @@
       <h2>{languageTo}</h2>
     </div>
     <div class="translate-area">
-      <textarea name="from" on:input={handleInput} class="translate-from" />
+      {#if languageTo === "Braille"}
+        <div class="translate-from">
+          {#each Object.values(braileMap) as letter}
+            <button>{letter}</button>
+          {/each}
+        </div>
+      {:else}
+        <textarea name="from" on:input={handleInput} class="translate-from" />
+      {/if}
       <hr />
       <textarea
         name="to"
@@ -47,7 +55,6 @@
 </main>
 
 <style>
-
   .translate-container {
     border: 2px solid gray;
     display: flex;
@@ -92,13 +99,29 @@
   }
 
   textarea {
-    min-width: 400px;
-    min-height: 300px;
+    width: 400px;
+    height: 300px;
     margin: 0;
     padding: 16px;
     font-size: 1rem;
     resize: none;
     border: none;
     outline: none;
+  }
+
+  div .translate-from {
+    width: 400px;
+    height: 300px;
+    padding: 16px;
+  }
+
+  .translate-from button {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    font-size: 24px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
   }
 </style>
