@@ -1,4 +1,4 @@
-export const braileMap = {
+export const brailleAlphabet = {
   a: "⠁",
   b: "⠃",
   c: "⠉",
@@ -25,4 +25,5 @@ export const braileMap = {
   x: "⠭",
   y: "⠽",
   z: "⠵",
+  " ": "⠀"
 };

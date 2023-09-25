@@ -1,25 +1,35 @@
 <script>
   import Header from "./lib/components/Header.svelte";
-  import { braileMap } from "./lib/alphabets/braileMap";
+  import { brailleAlphabet } from "./lib/alphabets/braileAlphabet";
 
-  let texto = "";
-  let textoTraducido = "";
+  let spanishText = "";
+  let translatedText = "";
 
   let languageFrom = "Español";
   let languageTo = "Braille";
 
+  function resetText() {
+    spanishText = "";
+    translatedText = "";
+  }
+
   function handleInput(e) {
-    texto = e.target.value;
+    spanishText = e.target.value;
+  }
+
+  function handleClick (letter) {
+    translatedText = translatedText.concat(letter)
   }
 
   function handleSwitchLanguages(e) {
+    resetText();
     [languageFrom, languageTo] = [languageTo, languageFrom];
   }
 
   $: {
-    textoTraducido = texto
+    translatedText = spanishText
       .split("")
-      .map((letra) => braileMap[letra.toLowerCase()])
+      .map((letter) => brailleAlphabet[letter.toLowerCase()])
       .join("");
   }
 </script>
@@ -34,22 +44,22 @@
       <h2>{languageTo}</h2>
     </div>
     <div class="translate-area">
-      {#if languageTo === "Braille"}
+      {#if languageFrom === "Braille"}
         <div class="translate-from">
-          {#each Object.values(braileMap) as letter}
-            <button>{letter}</button>
+          {#each Object.entries(brailleAlphabet) as [spanishLetter, brailleLetter]}
+            <button on:click={() => handleClick(spanishLetter)}>{brailleLetter}</button>
           {/each}
         </div>
       {:else}
-        <textarea name="from" on:input={handleInput} class="translate-from" />
+        <textarea name="from" on:input={handleInput} value={spanishText} />
       {/if}
       <hr />
-      <textarea
-        name="to"
+      <div
         class="translate-to"
-        value={textoTraducido}
-        disabled
-      />
+      >
+      {translatedText}
+      <img src="reload.svg" alt="reload" class="reload" on:click={resetText}>
+      </div>
     </div>
   </div>
 </main>
@@ -74,6 +84,15 @@
 
   .translate-area {
     display: flex;
+  }
+
+  .translate-to {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    font-size: 24px;
+    padding: 16px;
+    word-wrap: break-word;
   }
 
   .switch-languages {
@@ -109,7 +128,7 @@
     outline: none;
   }
 
-  div .translate-from {
+  .translate-from {
     width: 400px;
     height: 300px;
     padding: 16px;
@@ -118,10 +137,19 @@
   .translate-from button {
     width: 40px;
     height: 40px;
-    margin: 5px;
+    margin: 8px;
     font-size: 24px;
     border-radius: 4px;
     border: none;
+    cursor: pointer;
+  }
+
+  .reload {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
     cursor: pointer;
   }
 </style>
