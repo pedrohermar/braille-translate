@@ -4,6 +4,7 @@
   import FromBraille from "./lib/components/FromBraille.svelte";
   import FromSpanish from "./lib/components/FromSpanish.svelte";
   import TranslateHeader from "./lib/components/TranslateHeader.svelte";
+  import ReloadBtn from "./icons/ReloadBtn.svelte";
 
   let spanishText = "";
   let translatedText = "";
@@ -38,7 +39,10 @@
       <hr />
       <div class="translate-to">
         {translatedText}
-        <button class="reload-btn" on:click={resetText} />
+        <!-- <button class="reload-btn" on:click={resetText} /> -->
+        <div class="reload-btn" on:click={resetText}>
+          <ReloadBtn heightBtn="40px" widthBtn="40px" />
+        </div>
       </div>
     </div>
   </div>
@@ -78,15 +82,9 @@
   }
 
   .reload-btn {
-    height: 40px;
-    width: 40px;
-    background-image: url(reload.svg);
-    background-size: cover;
-    border: none;
-    background-color: transparent;
     position: absolute;
     right: 10px;
-    bottom: 10px;
+    bottom: 5px;
     cursor: pointer;
   }
 

@@ -1,4 +1,6 @@
 <script>
+  import SwitchBtn from "../../icons/SwitchBtn.svelte";
+
   export let languageFrom;
   export let languageTo;
   export let resetText;
@@ -11,7 +13,9 @@
 
 <div class="translate-header">
   <h2>{languageFrom}</h2>
-  <button class="switch-languages" on:click={handleSwitchLanguages} />
+  <div class="switch-languages" on:click={handleSwitchLanguages}>
+    <SwitchBtn widthBtn="40px" heightBtn="40px" />
+  </div>
   <h2>{languageTo}</h2>
 </div>
 
@@ -33,12 +37,6 @@
   }
 
   .switch-languages {
-    background-image: url(switch-horizontal.svg);
-    background-size: cover;
-    background-color: transparent;
-    height: 40px;
-    width: 80px;
-    border: none;
     cursor: pointer;
   }
 </style>
