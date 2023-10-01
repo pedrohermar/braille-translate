@@ -15,9 +15,10 @@
 
 <style>
   .from-braille {
-    width: 400px;
+    width: 50%;
     height: 300px;
     padding: 16px;
+    background-color: #e8e8e8;
   }
 
   .from-braille button {
@@ -26,7 +27,19 @@
     margin: 8px;
     font-size: 24px;
     border-radius: 4px;
-    border: none;
+    border: 1px solid gray;
+    background-color: #87f6ff;
     cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+
+  .from-braille button:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    .from-braille {
+      width: 100%;
+    }
   }
 </style>

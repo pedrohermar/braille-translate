@@ -15,13 +15,20 @@
 
 <style>
   .from-spanish {
-    width: 400px;
+    width: 50%;
     height: 300px;
     margin: 0;
     padding: 16px;
-    font-size: 1rem;
+    font-size: 24px;
+    background-color: #e8e8e8;
     resize: none;
     border: none;
     outline: none;
+  }
+
+  @media (max-width: 768px) {
+    .from-spanish {
+      width: 100%;
+    }
   }
 </style>

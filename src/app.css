@@ -3,13 +3,18 @@
 }
 
 body {
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
   background-color: #87F6FF;
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+#app {
+  width: 100%;
+  margin: auto;
 }
