@@ -17,8 +17,10 @@
   .from-braille {
     width: 50%;
     height: 300px;
-    padding: 16px;
+    padding: 12px;
     background-color: #e8e8e8;
+    box-sizing: border-box;
+    resize: none;
   }
 
   .from-braille button {
@@ -40,6 +42,12 @@
   @media (max-width: 768px) {
     .from-braille {
       width: 100%;
+    }
+
+    .from-braille button {
+      width: 37px;
+      height: 37px;
+      margin: 6px;
     }
   }
 </style>

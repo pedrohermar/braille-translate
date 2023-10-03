@@ -19,11 +19,12 @@
     height: 300px;
     margin: 0;
     padding: 16px;
-    font-size: 24px;
+    font-size: 16px;
     background-color: #e8e8e8;
-    resize: none;
     border: none;
     outline: none;
+    box-sizing: border-box;
+    resize: none;
   }
 
   @media (max-width: 768px) {

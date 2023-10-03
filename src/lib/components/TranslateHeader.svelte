@@ -27,6 +27,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: rgb(254, 224, 80);
+    overflow-x: hidden;
   }
 
   .translate-header h2 {

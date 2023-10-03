@@ -64,6 +64,7 @@
   .translate-area {
     display: flex;
     width: 100%;
+    overflow: hidden;
   }
 
   .translate-to {
@@ -74,6 +75,8 @@
     padding: 16px;
     background-color: #e8e8e8;
     word-wrap: break-word;
+    box-sizing: border-box;
+    resize: none;
   }
 
   hr {
@@ -84,7 +87,7 @@
   .reload-btn {
     position: absolute;
     right: 10px;
-    bottom: 5px;
+    bottom: 0;
     cursor: pointer;
   }
 
@@ -100,8 +103,8 @@
     .reload-btn {
       height: 30px;
       width: 30px;
-      right: 40px;
-      bottom: 10px;
+      right: 15px;
+      bottom: 15px;
     }
 
     .translate-to {
