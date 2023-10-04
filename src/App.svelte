@@ -6,12 +6,14 @@
   import TranslateHeader from "./lib/components/TranslateHeader.svelte";
   import ReloadBtn from "./icons/ReloadBtn.svelte";
 
+  const fullAlphabet = {...brailleAlphabet.mayus, ...brailleAlphabet.minus, ...brailleAlphabet.num}
+
   let spanishText = "";
   let translatedText = "";
-
+  
   let languageFrom = "Español";
   let languageTo = "Braille";
-
+  
   function resetText() {
     spanishText = "";
     translatedText = "";
@@ -20,7 +22,9 @@
   $: {
     translatedText = spanishText
       .split("")
-      .map((letter) => brailleAlphabet[letter.toLowerCase()])
+      .map((char) => { 
+        return fullAlphabet[char]
+      })
       .join("");
   }
 </script>

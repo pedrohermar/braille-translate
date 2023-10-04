@@ -34,7 +34,8 @@
     margin: 0;
     padding: 12px 16px;
     width: 100%;
-    text-align: left;
+    text-align: center;
+    
   }
 
   .switch-languages {
